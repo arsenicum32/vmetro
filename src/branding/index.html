@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html manifest="app.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Стили, необходимые для работы брендинга -->
+    <link rel="stylesheet" media="all" href="//static.wi-fi.ru/brandings/_cacheAssets/branding.css">
+    <script>
+        function onUpdateReady() {
+            window.location.reload();
+        }
+        window.applicationCache.addEventListener('updateready', onUpdateReady);
+        if(window.applicationCache.status === window.applicationCache.UPDATEREADY) {
+            onUpdateReady();
+        }
+    </script>
+    <!--
+        Скрипт, содержащий конфигурацию
+        Разрешается изменять занчения полей согласно возможным значениям.
+        Запрещено добавлять свои поля, исполняемый код
+     -->
+    <script>
+        window.settings = {
+            // Использование подложки. Значение 'html' указывает на использование
+            // html файла /src/background/index.html в качестве фона.
+            // Если значением является валидный css цвет, он будет использован в качестве фона,
+            // html файл /src/background/index.html будет проигнорирован
+            background: 'html', // возможные значения: 'html' или любой валидный css цвет
+
+            // Указание цвета отдельно для фона шапки
+            header: {
+                backgroundColor: 'transparent' // возможные значения: любой валидный css цвет
+            },
+
+            // Указание цвета отдельно для футера
+            footer:{
+                backgroundColor: 'transparent' // возможные значения: любой валидный css цвет
+            },
+
+            // Стилизация кнопки подключения к интернету
+            joinInternet:{
+                backgroundColor:'white', // возможные значения: любой валидный css цвет
+                color: 'black', // возможные значения: любой валидный css цвет
+                presetArrow: 'black', // возможные значения: 'black', 'white'
+                presetDelimiter: 'black', // возможные значения: 'black', 'white'
+                presetIcon: 'black' // возможные значения: 'black', 'white'
+            },
+
+            // Стилизация кнопки отключения рекламы
+            premium:{
+                backgroundColor:'#000', // возможные значения: любой валидный css цвет
+                color:'#fff', // возможные значения: любой валидный css цвет
+                presetArrow: 'white', // возможные значения: 'black', 'white'
+                presetDelimiter: 'white', // возможные значения: 'black', 'white'
+                presetIcon: 'white' // возможные значения: 'black', 'white'
+            },
+
+            // Цвет кнопки поддержки
+            presetSupportButton:'white', // возможные значения: 'black', 'white'
+
+            // Цвет кнопки смены языка
+            presetLanguageButton:'white', // возможные значения: 'black', 'white'
+
+            // Цвет текста ссылки на оферту
+            presetTermsOfUse:'white' // возможные значения: 'black', 'white'
+        };
+    </script>
+
+    <style>
+    	*, *:before, *:after {
+		  box-sizing: border-box;
+		}
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        small{
+          font-family: sans-serif;
+          font-size: .5em;
+          text-decoration: none;
+          color: white;
+          text-align: center;
+          position: absolute;
+          bottom: 10px;
+          width: 80%;
+          left: 10%;
+        }
+
+      .image_background_big{
+        width: 100%;
+        height: 100%;
+        background: url("https://www.omo.ru/img/pc.jpg") no-repeat top left;
+        background-size: cover;
+      }
+
+      @media (orientation: portrait){
+        .image_background_big{
+          width: 100%;
+          height: 100%;
+          background: url("https://www.omo.ru/img/ipad.jpg") no-repeat center center;
+          background-size: cover;
+        }
+      }
+
+      @media (min-width: 1280px){
+        .image_background_big{
+          width: 100%;
+          height: 100%;
+          background: url("https://www.omo.ru/img/pc.jpg") no-repeat center center;
+          background-size: contain;
+        }
+      }
+
+      @media (orientation: portrait){
+        .image_background_big{
+          width: 100%;
+          height: 100%;
+          background: url("https://www.omo.ru/img/ipad.jpg") no-repeat center center;
+          background-size: cover;
+        }
+      }
+
+      @media only screen
+        and (min-width: 375px)
+        and (max-width: 812px)
+        and (-webkit-min-device-pixel-ratio: 3)
+        and (orientation: portrait) {
+          .image_background_big{
+            width: 100%;
+            height: 100%;
+            background: url("https://www.omo.ru/img/ipad.jpg") no-repeat center center;
+            background-size: cover;
+          }
+      }
+
+      @media only screen
+        and (min-device-width: 414px)
+        and (max-device-width: 736px)
+        and (-webkit-min-device-pixel-ratio: 3)
+        and (orientation: portrait) {
+          .image_background_big{
+            width: 100%;
+            height: 100%;
+            background: url("https://www.omo.ru/img/ipad.jpg") no-repeat center center;
+            background-size: cover;
+          }
+      }
+
+      @media only screen
+        and (min-device-width: 834px)
+        and (max-device-width: 1112px)
+        and (orientation: portrait)
+       {
+          .image_background_big{
+            width: 100%;
+            height: 100%;
+            background: url("https://www.omo.ru/img/ipad.jpg") no-repeat center center;
+            background-size: cover;
+          }
+      }
+
+      @media only screen
+        and (min-device-width: 834px)
+        and (max-device-width: 1112px)
+        and (orientation: landscape)
+       {
+          .image_background_big{
+            width: 100%;
+            height: 100%;
+            background: url("https://www.omo.ru/img/pc.jpg") no-repeat top center;
+            background-size: cover;
+          }
+      }
+
+    </style>
+</head>
+<body>
+    <a href="#" data-event-click="1">
+      <div class="image_background_big">
+        <small style="color: white">*В продукции Unilever. 1 колпачок объемом 65 мл на 5 кг стирки.  **Подробную информацию о применении продукта смотрите на индивидуальной упаковке.</small>
+      </div>
+    </a>
+    <!-- Скрипт, необходимый для работы брендинга -->
+    <script src="//static.wi-fi.ru/brandings/_cacheAssets/branding.js"></script>
+</body>
+</html>
